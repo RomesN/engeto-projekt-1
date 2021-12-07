@@ -48,7 +48,7 @@ else:
     print("The user not registered! This program ends for you pal.")
     quit()
 
-# chosing a text to analyze
+# choosing text to analyze
 text_sel = input("Enter a number between 1 and 3 to select: ")
 
 print(separator)
