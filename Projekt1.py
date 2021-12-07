@@ -98,7 +98,6 @@ print(f"There are {upper_counter} uppercase word/s.")
 print(f"There are {lower_counter} lowercase word/s.")
 print(f"There are {numeric_counter} numeric string/s.")
 print(f"The sum of all the numbers is {numbers_counter}.")
-
 print(separator)
 print(f"LEN|  OCCURENCES  |NR.")
 print(separator)
