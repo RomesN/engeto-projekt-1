@@ -91,12 +91,6 @@ for word in word_list:
     else:
         words_len_dic[word_len] = words_len_dic.setdefault(word_len, 0) + 1
 
-lens = list(words_len_dic.keys())
-occur = list(words_len_dic.values())
-
-for _ in lens:
-    word_len_c += 1
-
 #printing
 print(f"There are {word_counter} word/s in the selected text.")
 print(f"There are {title_counter} titlecase word/s.")
