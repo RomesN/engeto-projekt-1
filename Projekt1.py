@@ -34,7 +34,7 @@ reg_users = {"bob": "123", "ann": "pass123", "mike": "password123", "liz": "pass
 # helping variable
 separator = "-" * 40
 
-# sigin in and eventual welcome
+# singing in and eventual welcome
 usern = input("username: ")
 passw = input("password: ")
 
