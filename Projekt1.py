@@ -108,7 +108,7 @@ print(f"The sum of all the numbers is {numbers_counter}.")
 print(separator)
 print(f"LEN|  OCCURENCES  |NR.")
 print(separator)
-for _ in range(0, word_len_c):
-    ast_line = "*" * occur[_]
-    print(f"{lens[_]:<2}|{ast_line:<20}|{occur[_]:<2}")
+for key in words_len_dic:
+    ast_line = "*" * words_len_dic[key]
+    print(f"{key:<2}|{ast_line:<20}|{words_len_dic[key]:<2}")
 
