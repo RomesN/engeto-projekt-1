@@ -46,6 +46,7 @@ if reg_users.get(usern) == passw:
     print(separator)
 else:
     print("The user not registered! This program ends for you pal.")
+    print(separator)
     quit()
 
 # choosing text to analyze
@@ -56,8 +57,9 @@ print(separator)
 # quiting if wrong input
 if int(text_sel) not in range(1, 4):
     print("Oh no! Such text does not exist. Please select number between 1 and 3.")
-    quit()
     print(separator)
+    quit()
+
 
 # defining variables
 text_analyzed = TEXTS[int(text_sel) - 1]
