@@ -45,25 +45,29 @@ if reg_users.get(usern) == passw:
     print(f"We have 3 texts to be analyzed.")
     print(separator)
 else:
-    print("The user not registered! This program ends for you pal.")
+    print("The user not registered! This program ends for you.")
     print(separator)
     quit()
 
 # choosing text to analyze
-text_sel = input("Enter a number between 1 and 3 to select: ")
+text_choice = input("Enter a number between 1 and 3 to select: ")
 
 print(separator)
 
 # quiting if wrong input
-if int(text_sel) not in range(1, 4):
+if not text_choice.isnumeric():
+    print("Please select number between 1 and 3.")
+    print(separator)
+    quit()
+elif int(text_choice) not in range(1, 4):
     print("Oh no! Such text does not exist. Please select number between 1 and 3.")
     print(separator)
     quit()
 
 
 # defining variables
-text_analyzed = TEXTS[int(text_sel) - 1]
-word_list = text_analyzed.split()
+text_analyzed = TEXTS[int(text_choice) - 1]
+word_list = []
 word_counter = 0
 title_counter = 0
 upper_counter = 0
@@ -74,10 +78,15 @@ word_len = 0
 word_len_c = 0
 words_len_dic = dict()
 
+# text cleaning
+for word in text_analyzed.split():
+    word_list.append(
+        word.strip(",.:;!#%&?")
+    )
+
 # calculating statistics
 for word in word_list:
     word_counter += 1
-    word_wo_spec = (''.join(char for char in word if char.isalnum())).lower()
     if word.istitle():
         title_counter += 1
     if word.isupper() and word.isalpha():
@@ -88,12 +97,24 @@ for word in word_list:
         numeric_counter += 1
         numbers_counter += int(word)
     word_len = 0
-    for char in word_wo_spec:
+    for char in word:
         word_len += 1
     else:
         words_len_dic[word_len] = words_len_dic.setdefault(word_len, 0) + 1
 
-#printing
+# transforming and sorting dict {Len: Frq} into list of tuples (Len, Frq) ascending according to word length
+words_len_dic_cop = words_len_dic.copy()
+words_len_sorted = [words_len_dic_cop.popitem()]
+for key in words_len_dic_cop:
+    for index, pair in enumerate(words_len_sorted):
+        if key < pair[0]:
+            words_len_sorted.insert(index, (key, words_len_dic_cop[key]))
+            break
+    else:
+        words_len_sorted.append((key, words_len_dic_cop[key]))
+
+
+# printing
 print(f"There are {word_counter} word/s in the selected text.")
 print(f"There are {title_counter} titlecase word/s.")
 print(f"There are {upper_counter} uppercase word/s.")
@@ -103,7 +124,6 @@ print(f"The sum of all the numbers is {numbers_counter}.")
 print(separator)
 print(f"LEN|  OCCURENCES  |NR.")
 print(separator)
-for key in words_len_dic:
-    ast_line = "*" * words_len_dic[key]
-    print(f"{key:<2}|{ast_line:<20}|{words_len_dic[key]:<2}")
-
+for LenFrq in words_len_sorted:
+    ast_line = "*" * LenFrq[1]
+    print(f"{LenFrq[0]:<2}|{ast_line:<20}|{LenFrq[1]:<2}")
