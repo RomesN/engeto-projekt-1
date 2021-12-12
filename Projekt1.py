@@ -101,7 +101,7 @@ for word in word_list:
     else:
         words_len_dic[word_len] = words_len_dic.setdefault(word_len, 0) + 1
 
-# transforming and sorting dict {Len: Frq} into list of tuples (Len, Frq) ascending according to word length
+# putting values from dict {Len: Frq} into list of tuples (Len, Frq) ascending according to word length
 words_len_dic_cop = words_len_dic.copy()
 words_len_sorted = [words_len_dic_cop.popitem()]
 for key in words_len_dic_cop:
