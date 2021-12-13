@@ -77,7 +77,7 @@ word_len = 0
 word_len_c = 0
 words_len_dic = dict()
 
-# text cleaning
+# text cleaning and creating list of words
 for word in text_analyzed.split():
     word_stripped = word.strip(",.:;!#%&?")
     if not word_stripped == "":
