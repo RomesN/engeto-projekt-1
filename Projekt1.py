@@ -79,9 +79,9 @@ words_len_dic = dict()
 
 # text cleaning
 for word in text_analyzed.split():
-    word_list.append(
-        word.strip(",.:;!#%&?")
-    )
+    word_stripped = word.strip(",.:;!#%&?")
+    if not word_stripped == "":
+        word_list.append(word_stripped)
 
 # calculating statistics
 for word in word_list:
